@@ -74,9 +74,9 @@ function is_linux() {
 
 function num_cpus() {
     local n
-    if $(is_osx); then
+    if is_osx; then
         n=$(sysctl -n hw.ncpu)
-    elif $(is_linux); then
+    elif is_linux; then
         n=$(grep ^processor /proc/cpuinfo | wc -l)
     else
         n=1
@@ -106,10 +106,10 @@ function fetch() {
     fi
     [[ -f $out ]] \
         && return
-    if $(is_linux); then
+    if is_linux; then
         do_cmd wget -O $out $url \
             || die "can not fetch $out from $url"
-    elif $(is_osx); then
+    elif is_osx; then
         do_cmd curl -R -o $out -L $url \
             || die "can not fetch $out from $url"
     else
