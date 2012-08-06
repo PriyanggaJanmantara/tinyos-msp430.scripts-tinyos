@@ -27,7 +27,7 @@ diff -ru tinyos-2.x/tools/tinyos/misc/tos-locate-jre build-tinyos-tools/tools/ti
      # Sun Java on Linux: in jre/lib/i386
      if [ `uname` = "Darwin" ]; then 
 -	jnilocate "/Library/Java/Extensions"
-+        if [ ${pv} = "10.8" ]; then
++        if [ ${pv} = "10.8" -o ${pv} = "10.7" ]; then
 +            jnilocate "/System/Library/Frameworks/JavaVM.framework/Versions/Current"
 +        else
 +            jnilocate "/Library/Java/Extensions"
